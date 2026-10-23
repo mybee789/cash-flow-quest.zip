@@ -40,7 +40,7 @@ export async function POST() {
       customerId = customer.id;
 
       await (supabase
-        .from("users" as any)
+        .from("users") as any)
         .update({ stripe_customer_id: customerId })
         .eq("id", user.id);
     }
