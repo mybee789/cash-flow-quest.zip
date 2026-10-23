@@ -66,8 +66,8 @@ export function TransactionTracker({
     setAmount("");
 
     startTransition(async () => {
-      const { data, error: insertError } = await supabase
-        .from("transactions") as any
+      const { data, error: insertError } = await (supabase
+        .from("transactions") as any)
         .insert({
           user_id: userId,
           type,
