@@ -48,8 +48,8 @@ export default async function DashboardPage() {
 
       <StreakScore
         transactions={txs}
-        currentStreak={profile?.current_streak ?? 0}
-        longestStreak={profile?.longest_streak ?? 0}
+        currentStreak={(profile as any)?.current_streak ?? 0}
+        longestStreak={(profile as any)?.longest_streak ?? 0}
       />
 
       <TransactionTracker userId={user.id} initialTransactions={txs} />
