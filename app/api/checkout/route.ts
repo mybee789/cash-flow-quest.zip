@@ -28,7 +28,7 @@ export async function POST() {
     .single();
 
   try {
-    let customerId = profile?.stripe_customer_id ?? undefined;
+    let customerId = (profile as any)?.stripe_customer_id ?? undefined;
 
     // Reuse an existing Stripe customer so retries/upgrades don't fragment
     // billing history; create one on first checkout.
