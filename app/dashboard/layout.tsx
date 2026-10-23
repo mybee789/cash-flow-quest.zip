@@ -35,7 +35,7 @@ export default async function DashboardLayout({
           </div>
           <div className="flex items-center gap-4">
             <span className="text-sm text-mist-500">
-              {profile?.display_name ?? user.email}
+              {(profile as any)?.display_name ?? user.email}
               {profile?.plan === "pro" ? (
                 <span className="ml-2 rounded-full bg-quest-amber/15 px-2 py-0.5 text-xs font-medium text-quest-amber">
                   Pro
