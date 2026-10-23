@@ -3,16 +3,16 @@ import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2026-09-30.endive' as any,
-});
-
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
-
 export async function POST(req: Request) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+    apiVersion: '2026-09-30.endive' as any,
+  });
+
+  const supabaseAdmin = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+
   const body = await req.text();
   const signature = (await headers()).get('stripe-signature')!;
 
@@ -35,7 +35,6 @@ export async function POST(req: Request) {
     const customerId = session.customer as string;
     const subscriptionId = session.subscription as string;
 
-    // Supabase သို့ ဒေတာထည့်သွင်းခြင်း
     const { error } = await supabaseAdmin
       .from('subscriptions')
       .upsert({
