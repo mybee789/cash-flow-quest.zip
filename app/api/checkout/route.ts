@@ -15,7 +15,7 @@ function getRequiredEnv(name: string): string {
 export async function POST() {
   try {
     const secretKey = getRequiredEnv("STRIPE_SECRET_KEY");
-    const priceId = getRequiredEnv("STRIPE_PRICE_ID_PRO");
+    const priceId = getRequiredEnv("STRIPE_PRICE_ID");
     const origin = getRequiredEnv("NEXT_PUBLIC_SITE_URL").replace(/\/$/, "");
 
     const stripe = new Stripe(secretKey, {
