@@ -37,7 +37,7 @@ export async function POST() {
     }
 
     const { data: profile, error: profileError } = await supabase
-      .from("users")
+      .from("subscriptions")
       .select("stripe_customer_id, email")
       .eq("id", user.id)
       .maybeSingle();
